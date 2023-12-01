@@ -7,12 +7,12 @@ public interface IAnswer
 
 public static class Util 
 {
-    private const string   QuestionPath      = "./questions/";
+    private const string   QuestionPath      = "../../../questions/";
     public static string?[] QuestionFileNames { get; private set; }
 
     public static void LoadQuestionFileNames()
     {
-        QuestionFileNames = Directory.GetFiles("../../../" + QuestionPath)
+        QuestionFileNames = Directory.GetFiles(QuestionPath)
                                      .Select(Path.GetFileName)
                                      .ToArray();
         
