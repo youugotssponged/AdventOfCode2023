@@ -9,8 +9,8 @@ public class Question2 : IAnswer
         
         foreach (var game in lines)
         {
-            string[] gameAndCubes = game.Split(":"); // Game 1 : / SETS
-            string[] cubeSets     = gameAndCubes[1].Split(";"); // 1 red, 2 blue / 2 red, 3 green
+            string[] gameAndCubes = game.Split(":");
+            string[] cubeSets     = gameAndCubes[1].Split(";");
             int      gameId       = Convert.ToInt32(gameAndCubes[0].Split(" ")[1]); 
             
             int setsPassed = 0;
@@ -22,11 +22,11 @@ public class Question2 : IAnswer
                 int totalGreenFound = 0;
                 int totalBlueFound = 0;
                 
-                string[] cubesInSet = set.Split(","); // 1 red / 2 blue
+                string[] cubesInSet = set.Split(",");
                 foreach (var cubes in cubesInSet)
                 {
-                    string[] identity = cubes.TrimStart().Split(" "); // 1 / red
-                    int numberOf = Convert.ToInt32(identity[0]); // 1
+                    string[] identity = cubes.TrimStart().Split(" ");
+                    int numberOf = Convert.ToInt32(identity[0]);
                     
                     switch (identity[1]) // red
                     {
@@ -58,12 +58,12 @@ public class Question2 : IAnswer
     private void Part2()
     {
         List<string> lines = Util.LoadQuestionFile(Util.QuestionFileNames[1]!);
-        List<int> possibleGames = new List<int>(); // powers
+        List<int> possibleGames = new List<int>();
 
         foreach (var game in lines)
         {
-            string[] gameAndCubes = game.Split(":"); // Game 1 : / SETS
-            string[] cubeSets     = gameAndCubes[1].Split(";"); // 1 red, 2 blue / 2 red, 3 green
+            string[] gameAndCubes = game.Split(":");
+            string[] cubeSets     = gameAndCubes[1].Split(";");
             int      gameId       = Convert.ToInt32(gameAndCubes[0].Split(" ")[1]); 
             
             int setsPassed = 0;
@@ -75,28 +75,28 @@ public class Question2 : IAnswer
             
             foreach (var set in cubeSets)
             {
-                string[] cubesInSet = set.Split(","); // 1 red / 2 blue
+                string[] cubesInSet = set.Split(",");
                 foreach (var cubes in cubesInSet)
                 {
-                    string[] identity = cubes.TrimStart().Split(" "); // 1 / red
-                    int numberOf = Convert.ToInt32(identity[0]); // 1
+                    string[] identity = cubes.TrimStart().Split(" "); 
+                    int numberOf = Convert.ToInt32(identity[0]);
                     
-                    switch (identity[1]) // red
+                    switch (identity[1])
                     {
                         case "red":
-                            if (numberOf >= maxRedFound)
+                            if (numberOf > maxRedFound)
                             {
                                 maxRedFound = numberOf;
                             }
                             break;
                         case "green":
-                            if (numberOf >= maxGreenFound)
+                            if (numberOf > maxGreenFound)
                             {
                                 maxGreenFound = numberOf;
                             }
                             break;
                         case "blue":
-                            if (numberOf >= maxBlueFound)
+                            if (numberOf > maxBlueFound)
                             {
                                 maxBlueFound = numberOf;
                             }
